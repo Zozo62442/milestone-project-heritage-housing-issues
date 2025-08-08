@@ -172,14 +172,16 @@ model = RandomForestRegressor()
 model.fit(X_train, y_train)
 
 ## Credits
-
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism.
-* You can break the credits section up into Content and Media, depending on what you have included in your project.
-
+    
 ### Content
 
-* The text for the Home page was taken from Wikipedia Article A
-* Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
+* Machine Learning Full Course [YouTube Tutorial](https://www.youtube.com/watch?v=i_LwzRVP7bg&list=PLWKjhJtqVAblfum5WiQblKPwIbqYXkDoC&index=5)
+* Additional resources to the CodeInstitute learning platform came from DataCamp
+    * [Machine Learning Cheat Sheet](https://www.datacamp.com/cheat-sheet/machine-learning-cheat-sheet)
+    * [The Beginner's Guide to The Machine Learning Workflow](https://www.datacamp.com/blog/a-beginner-s-guide-to-the-machine-learning-workflow)
+    * [10 Top Machine Learning Algorithms & Their Use-Cases](https://www.datacamp.com/blog/top-machine-learning-use-cases-and-algorithms)
+    * [Data Visualization Cheat Sheet](https://www.datacamp.com/cheat-sheet/data-viz-cheat-sheet)
+    * [Scikit-Learn Cheat Sheet: Python Machine Learning](https://www.datacamp.com/cheat-sheet/scikit-learn-cheat-sheet-python-machine-learning)
 * The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
 
 ### Media
