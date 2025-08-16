@@ -1,20 +1,29 @@
 import streamlit as st
 
-# Class to generate multiple Streamlit pages using an object oriented approach 
-class MultiPage: 
+# Configure the main app settings (only once, at the start)
+st.set_page_config(
+    page_title="Ames Housing Price Prediction",
+    page_icon="🏠",
+    layout="wide"
+)
 
-    def __init__(self, app_name) -> None:
+# Class to handle multiple Streamlit pages
+class MultiPage:
+
+    def __init__(self, app_name: str) -> None:
         self.pages = []
         self.app_name = app_name
 
-        st.set_page_config(
-            page_title=self.app_name,
-            page_icon="🏠") # House icon for the house price prediction app
-    
-    def add_page(self, title, func) -> None: 
-        self.pages.append({"title": title, "function": func })
+    def add_page(self, title: str, func) -> None:
+        """Add a new page to the app"""
+        self.pages.append({"title": title, "function": func})
 
     def run(self):
+        """Run the selected page"""
         st.title(self.app_name)
-        page = st.sidebar.radio('Menu', self.pages, format_func=lambda page: page['title'])
+        page = st.sidebar.radio(
+            '📑 Navigation',
+            self.pages,
+            format_func=lambda page: page['title']
+        )
         page['function']()
