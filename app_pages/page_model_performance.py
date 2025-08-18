@@ -22,9 +22,14 @@ def page_model_performance_body():
         st.error(f"Error loading model or data: {e}")
         return
 
-    # Separate features and target
-    X = test_data.drop("SalePrice", axis=1)
-    y = test_data["SalePrice"]
+    # Separate features and target (align columns to training features)
+    target = "SalePrice"
+    try:
+        X = test_data[model.feature_names_in_]  # enforce same feature set as training
+    except Exception as e:
+        st.error(f"Column alignment issue: {e}")
+        return
+    y = test_data[target]
 
     # Predict
     y_pred = model.predict(X)
