@@ -15,7 +15,7 @@ def page_predict_lydia_houses_body():
 
     # Load data + model
     try:
-        lydia_houses = pd.read_csv("outputs/datasets/collection/inherited_houses.csv")
+        lydia_houses = pd.read_csv("outputs/datasets/cleaned/inherited_houses_cleaned.csv")
         price_prediction_pipeline = joblib.load(
             "outputs/ml_pipeline/predict_SalePrice/v1/best_regressor_pipeline.pkl"
         )
@@ -80,7 +80,7 @@ def page_predict_lydia_houses_body():
     # Recommendations (can later replace with data-driven rules)
     st.info(
         f"**Recommendations for Lydia:**\n"
-        f"* Consider prioritizing houses with higher predicted values when selling.\n"
+        f"* Consider prioritising houses with higher predicted values when selling.\n"
         f"* Explore cost-effective renovations (e.g., kitchen, bathrooms) in lower-valued houses.\n"
         f"* Compare predicted values with recent Ames market trends before making final decisions."
     )

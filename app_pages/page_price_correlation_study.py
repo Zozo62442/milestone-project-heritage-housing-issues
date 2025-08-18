@@ -46,7 +46,7 @@ def page_price_correlation_study_body():
         f"**Key Insights from Correlation Analysis:**\n"
         f"* **OverallQual** (overall material and finish quality) is the strongest driver of price.\n"
         f"* **GrLivArea** (above ground living area) is highly correlated with price — bigger homes tend to be more expensive.\n"
-        f"* **GarageCars** and **TotalBsmtSF** show strong positive relationships with price.\n"
+        f"* **GarageArea** and **TotalBsmtSF** show strong positive relationships with price.\n"
         f"* **YearBuilt** shows that newer homes are generally valued higher."
     )
 
@@ -63,8 +63,7 @@ def page_price_correlation_study_body():
         plot_pps_analysis(df)
 
 
-# ---------- Helper plotting functions ----------
-
+# Helper plotting functions
 def price_correlation_per_variable(df, vars_to_study, target_var):
     """Create individual plots for each variable vs SalePrice"""
     for col in vars_to_study:
@@ -111,16 +110,31 @@ def plot_correlation_matrix(df):
     st.pyplot(fig)
 
 
-def plot_pps_analysis(df):
-    """Predictive Power Score analysis"""
+def plot_pps_analysis(df, target="SalePrice"):
+    """Predictive Power Score analysis for SalePrice"""
     try:
         import ppscore as pps
+        # Get full PPS matrix
         pps_matrix = pps.matrix(df)
-        fig = px.imshow(
-            pps_matrix.pivot("x", "y", "ppscore"),
-            color_continuous_scale="Blues",
-            title="Predictive Power Score Matrix"
+
+        # Filter only rows where target is the dependent variable (y)
+        pps_target = pps_matrix[pps_matrix['y'] == target][['x', 'ppscore']]
+
+        # Sort by strength of PPS
+        pps_target = pps_target.sort_values(by="ppscore", ascending=False)
+
+        # Plot as bar chart instead of heatmap for clarity
+        fig = px.bar(
+            pps_target,
+            x="ppscore",
+            y="x",
+            orientation="h",
+            title=f"PPS: Feature Predictive Strength for {target}",
+            labels={"ppscore": "Predictive Power Score", "x": "Feature"},
         )
-        st.plotly_chart(fig)
+
+        fig.update_layout(yaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig, use_container_width=True)
+
     except ImportError:
         st.error("ppscore library not installed. Run `pip install ppscore` to use PPS analysis.")
