@@ -184,13 +184,6 @@ model.fit(X_train, y_train)
     * [Scikit-Learn Cheat Sheet: Python Machine Learning](https://www.datacamp.com/cheat-sheet/scikit-learn-cheat-sheet-python-machine-learning)
 * The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
 
-### Media
-
-* The photos used on the home and sign-up page are from This Open Source site
-* The images used for the gallery page were taken from this other open-source site
-
 ## Acknowledgements (optional)
-
-
-* In case you would like to thank the people that provided support through this project.
+* I would like to thank my mentor for taking time to meet even when he had a busy schedule. 
 
